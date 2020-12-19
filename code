@@ -1,0 +1,23 @@
+#include<iostream>
+#include<iomanip>
+#include<math.h>
+#define f1(X1,X2,X3)  -(1+1*X2-2*X3)/5
+#define f2(X1,X2,X3)  (2-2*X1+3*X3)/6
+#define f3(X1,X2,X3)  (32-2*X1-X2)/7
+using namespace std;
+int main()
+{
+ float Oc1=0, Oc2=0, Oc3=0, X1, X2, X3, e1, e2, e3, e=1e-6;
+ int i=1;
+ cout<< setprecision(6)<< fixed;
+ cout<< endl<<"Count\tX1\t\tX2\t\tX3"<< endl;
+ do{
+  	X1 = f1(Oc1,Oc2,Oc3); X2 = f2(Oc1,Oc2,Oc3); X3 = f3(Oc1,Oc2,Oc3);
+  	cout<< i<<"\t"<< X1<<"\t"<< X2<<"\t"<< X3<< endl;
+  	e1 = fabs(Oc1-X1); e2 = fabs(Oc2-X2); e3 = fabs(Oc3-X3);
+  	i++;
+  	Oc1 = X1; Oc2 = X2; Oc3 = X3;}
+ while(e1>e && e2>e && e3>e);
+ 	cout<< endl<<"Solution: X1 = "<< X1<<", X2 = "<< X2<<" and X3 = "<< X3;
+ return 0;
+}
